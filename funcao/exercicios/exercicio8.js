@@ -1,18 +1,21 @@
 function analiseJogos(jogos) {
-    const arrayJogos = jogos.split(" ")
-    
-    let maximaPontuacao = "";
-    for (let i = 0; i <= arrayJogos.length; i++) {
-        if(i == 0) {
-            maximaPontuacao = arrayJogos[i]
-        } else {
-            arrayJogos[i] > maximaPontuacao ?  maximaPontuacao  = arrayJogos[i] : ''
-        }
+    const arrayJogos = jogos.split(" ").map(element => {
+        return parseInt(element)
+    });
+
+    let pontuacaoMax = 0
+    let vezesRecorde = -1
+
+    for (let i = 0; i < arrayJogos.length; i++) {
+        if (arrayJogos[i] > pontuacaoMax) {
+            pontuacaoMax = arrayJogos[i]
+            vezesRecorde++
+        } 
     }
 
-    return maximaPontuacao
+    return [vezesRecorde ]
 }
 
-console.log(analiseJogos("12 141 -5 0 23 142"))
+console.log(analiseJogos("12 14 5 0 23 142 550"))
 
 
